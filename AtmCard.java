@@ -1,26 +1,34 @@
 public class AtmCard 
 {
-    private int defaultPin;
-    private int defaultBalance;
+    private int pin;
+    private int balance;
 
-    public AtmCard(int defaultPin, int defaultBalance)
-    {
-        this.defaultPin = defaultPin;
-        this.defaultBalance = defaultBalance;
-    }
+    // Method constructor dengan pin default dan saldo minimal 50k
     public AtmCard()
     {
-        this.defaultPin = 1234;
-        this.defaultBalance = 10000;
+        this.pin = 123456;
+        this.balance = 50000;
     }
 
-    protected int getPinAwal()
+    public int getPin()
     {
-        return this.defaultPin;
+        return this.pin;
+    }
+
+    // Mengubah pin pada kartu
+    public void setPin(int pinBaru)
+    {
+        this.pin = pinBaru;
     }
     
-    protected int getBalanceAwal()
+    public int getBalance()
     {
-        return this.defaultBalance;
+        return this.balance;
     }
+
+    public void setBalance(int balanceBaru)
+    {
+        this.balance = balanceBaru;
+    }
+    
 }
