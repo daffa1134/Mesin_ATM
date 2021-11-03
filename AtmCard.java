@@ -14,11 +14,12 @@ public class AtmCard
         this.defaultBalance = 10000;
     }
 
-    public int getPinAwal()
+    protected int getPinAwal()
     {
         return this.defaultPin;
     }
-    public int getBalanceAwal()
+    
+    protected int getBalanceAwal()
     {
         return this.defaultBalance;
     }
