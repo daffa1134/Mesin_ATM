@@ -1,16 +1,16 @@
-public class Customer extends AtmCard
+public class Customer
 {
-    private int id, pin, balance;
+    private int id;
+    private AtmCard card;
 
     /* 
     method constrkator
     */
     public Customer(int id)
     {
-        super();
         this.id = id;
-        this.pin = getPinAwal();
-        this.balance = getBalanceAwal();
+        // Composition
+        card = new AtmCard();
     }
     /*
     other method/feature of customer
@@ -19,26 +19,33 @@ public class Customer extends AtmCard
     {
         return this.id;
     }
-    public int getPin()
-    {
-        return this.pin;
-    }
+    
+    // Mengubah pin customer, dan juga merubahnya pada class AtmCard
     public void setPin(int pin)
     {
-        this.pin = pin;
+        card.setPin(pin);
     }
+
+    public int getPin()
+    {
+        return card.getPin();
+    }
+
     public int getBalance()
     {
-        return this.balance;
+        return card.getBalance();
     }
+
     //method tarik saldo
     public void setWithdrawBalance(int nominal)
     {
-        this.balance -= nominal;
+        // Mengupdate saldo pada class AtmCard
+        card.setBalance(card.getBalance() - nominal);
     }
     // method setor saldo
     public void setDepositBalance(int nominal)
     {
-        this.balance += nominal;
+        // Mengupdate saldo pada class AtmCard
+        card.setBalance(card.getBalance() + nominal);
     }
 }
