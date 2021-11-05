@@ -32,7 +32,7 @@ public class mainATM{
                 System.exit(0);
             }
             
-            System.out.println("Selamat Datang Di ATM Progate..");
+            System.out.println("Selamat Datang Di ATM-KU..");
             
             do{
                 System.out.println("\tMenu :");
