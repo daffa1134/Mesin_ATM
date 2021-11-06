@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Date;
 
 public class MainATM{
-    static private int id;
+    static private int pin;
     static private Customer user;
     static Scanner input_int = new Scanner(System.in);
     static Scanner input_str = new Scanner(System.in);
@@ -43,18 +43,18 @@ public class MainATM{
         String confirm;
         
         // Database
-        user = new Customer(id);
+        user = new Customer(10013);
         //struk
         MainATM strk = new MainATM();
 
         while (true) {
             System.out.print("Masukkan pin anda: ");
-            id = input_int.nextInt();
+            pin = input_int.nextInt();
             trial = 1;
 
-            while(id != user.getPin()){
+            while(pin != user.getPin()){
                 System.out.print("Pin salah! Silahkan masukkan lagi: ");
-                id = input_int.nextInt();
+                pin = input_int.nextInt();
                 trial ++;
                 if (trial == 3) {
                     System.out.println("Error! Silahkan ambil kartu dan coba lagi..");
@@ -90,7 +90,7 @@ public class MainATM{
                             System.out.println("Saldo awal anda adalah: Rp. " + user.getBalance());
                         }else break;
                         
-                        if (nominal < user.getBalance()){
+                        if (nominal <= user.getBalance()){
                             user.setWithdrawBalance(nominal);
                             System.out.println("Penarikan berhasil!");
                             System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
@@ -116,11 +116,11 @@ public class MainATM{
             
                     case 4:
                         System.out.print("Masukkan pin anda: ");
-                        id = input_int.nextInt();
+                        pin = input_int.nextInt();
                         
-                        while(id != user.getPin()){
+                        while(pin != user.getPin()){
                             System.out.print("Pin salah! Silahkan masukkan lagi: ");
-                            id = input_int.nextInt();
+                            pin = input_int.nextInt();
                         }
                         
                         System.out.print("Silahkan masukkan pin baru: ");
