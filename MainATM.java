@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.util.Date;
 
 public class MainATM{
     static private int id;
+    static private Customer user;
     static Scanner input_int = new Scanner(System.in);
     static Scanner input_str = new Scanner(System.in);
     
@@ -21,14 +23,29 @@ public class MainATM{
             System.err.println("Tidak bisa clear screen");
         }
     }
+    
+    public void struk()
+    {
+        System.out.println("Resi tercetak otomatis saat anda keluar!\nHarap simpan tanda terima ini sebagai bukti transaksi anda.\n");
+        double random = 100000 + Math.random() * (1000000-100000);
+        int resi = (int) random;
+        System.out.println("No. Record\t: " + resi);
+        Date tanggal = new Date();
+        System.out.println("Tanggal\t\t: " + tanggal);
+        System.out.println("Saldo akhir\t: Rp. " + user.getBalance() + "\n");
+        System.out.println("Terima kasih telah menggunakan ATM-KU");
 
+    }
+    
     public static void main(String[] args) throws Exception
     {       
         int trial, menu, nominal, newPin, newPinConfirm;
         String confirm;
         
         // Database
-        Customer user = new Customer(id);
+        user = new Customer(id);
+        //struk
+        MainATM strk = new MainATM();
 
         while (true) {
             System.out.print("Masukkan pin anda: ");
@@ -86,15 +103,17 @@ public class MainATM{
                         System.out.print("Masukkan nominal saldo: ");
                         nominal = input_int.nextInt();
                         
-                        System.out.print("Konfirmasi: Anda akan melakukan penyetoran dengan nominal berikut? y/n Rp. " + nominal + " ");
+                        System.out.println("Konfirmasi: Anda akan melakukan penyetoran dengan nominal berikut? y/n Rp. " + nominal + " ");
                         confirm = input_str.nextLine();
                         
                         if (confirm.equalsIgnoreCase("y")){
-                            user.setDepositBalance(nominal);
                             System.out.println("Saldo awal anda adalah: Rp. " + user.getBalance());
+                            user.setDepositBalance(nominal);
+                            System.out.println("Penyetoran berhasil!");
+                            System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
                         }else break;
-
-                        
+                        break;
+            
                     case 4:
                         System.out.print("Masukkan pin anda: ");
                         id = input_int.nextInt();
@@ -118,7 +137,7 @@ public class MainATM{
                         }
                         break;
                     case 5:
-                        System.out.println("Terima Kasih :)");
+                        strk.struk();
                         System.exit(0);
                         break;
                     default:
