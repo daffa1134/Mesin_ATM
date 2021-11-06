@@ -137,7 +137,6 @@ public class MainATM{
                         }
                         break;
                     case 5:
-                        strk.struk();
                         System.exit(0);
                         break;
                     default:
@@ -148,6 +147,7 @@ public class MainATM{
                 System.out.print("Lanjutkan transaksi? y/n ");
                 confirm = input_str.nextLine();
             } while(confirm.equalsIgnoreCase("y"));
+            strk.struk();
             break;
         }
     }
