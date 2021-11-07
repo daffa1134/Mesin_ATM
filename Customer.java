@@ -1,49 +1,50 @@
+import java.io.IOException;
+
 public class Customer
 {
-    private int id;
+    // private String nama;
+    private String id;
     private AtmCard card;
-
-    /* 
-    method constrkator
-    */
-    public Customer(int id)
+    
+    // method constrkator
+    public Customer(String id) throws IOException
     {
         this.id = id;
         // Composition
-        card = new AtmCard();
+        card = new AtmCard(id);
     }
     /*
     other method/feature of customer
     */
-    public int getId()
+    public String getId()
     {
         return this.id;
     }
     
     // Mengubah pin customer, dan juga merubahnya pada class AtmCard
-    public void setPin(int pin)
+    public void setPin(int pin) throws IOException
     {
         card.setPin(pin);
     }
 
-    public int getPin()
+    public int getPin() throws IOException
     {
         return card.getPin();
     }
 
-    public int getBalance()
+    public int getBalance() throws IOException
     {
         return card.getBalance();
     }
 
     //method tarik saldo
-    public void setWithdrawBalance(int nominal)
+    public void setWithdrawBalance(int nominal) throws IOException
     {
         // Mengupdate saldo pada class AtmCard
         card.setBalance(card.getBalance() - nominal);
     }
     // method setor saldo
-    public void setDepositBalance(int nominal)
+    public void setDepositBalance(int nominal) throws IOException
     {
         // Mengupdate saldo pada class AtmCard
         card.setBalance(card.getBalance() + nominal);

@@ -1,4 +1,8 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Date;
 
 public class MainATM{
@@ -24,7 +28,7 @@ public class MainATM{
         }
     }
     
-    public void struk()
+    public void struk() throws IOException
     {
         System.out.println("Resi tercetak otomatis saat anda keluar!\nHarap simpan tanda terima ini sebagai bukti transaksi anda.\n");
         double random = 100000 + Math.random() * (1000000-100000);
@@ -36,20 +40,55 @@ public class MainATM{
         System.out.println("Terima kasih telah menggunakan ATM-KU");
 
     }
+
+    private static boolean cekID(String id) throws IOException{
+        boolean adaData = true;
+        // Membuka file database
+        FileReader fileReader = new FileReader("Database.DATA");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        // Proses mencari id dari database
+        String data = bufferedReader.readLine();
+        StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
+        while (data != null) {
+            stringTokenizer = new StringTokenizer(data, ",");
+            stringTokenizer.nextToken();
+            // Ditemukan idnya
+            if (data.contains(id)) {
+                adaData = true;
+                break;
+            } else {
+                adaData = false;
+            }
+            // Baca baris berikutnya
+            data = bufferedReader.readLine();
+        }
+        bufferedReader.close();
+        return adaData;
+    }
     
     public static void main(String[] args) throws Exception
     {       
         int trial, menu, nominal, newPin, newPinConfirm;
-        String confirm;
-        
-        // Database
-        user = new Customer(10013);
+        String confirm, id;
+        System.out.print("Masukkan ID anda: ");
+        id = input_str.nextLine();
+        // Cek di database
+        if (cekID(id)) {
+            user = new Customer(id);
+        } else {
+            System.out.println("ID tidak ditemukan!!");
+            System.out.println("Silahkan mendaftar di bank!!");
+            System.exit(0);
+        }
         //struk
         MainATM strk = new MainATM();
 
         while (true) {
             System.out.print("Masukkan pin anda: ");
             pin = input_int.nextInt();
+            
+            // Cek PIN dari database
+            
             trial = 1;
 
             while(pin != user.getPin()){
