@@ -40,7 +40,7 @@ public class MainATM{
         System.out.println("Tanggal\t\t: " + tanggal);
         System.out.println("Saldo akhir\t: Rp. " + user.getBalance() + "\n");
         System.out.println("===========================================================");
-        System.out.println("Terima kasih telah menggunakan ATM-KU");
+        System.out.println("   \tTerima kasih telah menggunakan ATM-KU");
 
     }
 

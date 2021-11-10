@@ -23,13 +23,23 @@ public class AtmCard
     public AtmCard(String id) throws IOException {
         this.id = id;
         // Dapatkan pin dari database
-        this.pin = getPin();
+        this.pin = getPin(id);
         // Dapatkan saldo dari database
-        this.balance = getBalance();
+        this.balance = getBalance(id);
     }   
 
+    // Method Mendapatkan PIN default
+    public int getPin() {
+        return this.pin;
+    }
+
+    // Method Mendapatkan Saldo awal
+    public int getBalance() {
+        return this.balance;
+    }
+
     // Method mendapatkan PIN di database
-    public int getPin() throws IOException
+    public int getPin(String id) throws IOException
     {
         FileReader fileReader = new FileReader("Database.DATA");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -106,7 +116,7 @@ public class AtmCard
     }
 
     
-    public int getBalance() throws IOException
+    public int getBalance(String id) throws IOException
     {
         FileReader fileReader = new FileReader("Database.DATA");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -158,10 +168,12 @@ public class AtmCard
                 // Dapatkan nama
                 String nama = stringTokenizer.nextToken();
                 // Copy ke database sementara
-                bufferedWriter.write(id + "," + pin + "," + Integer.toString(balanceBaru) + "," + nama + "\n");
+                bufferedWriter.write(id + "," + pin + "," + Integer.toString(balanceBaru) + "," + nama);
+                bufferedWriter.newLine();
             } else {
                 // Copy ke database sementara
-                bufferedWriter.write(data + "\n");
+                bufferedWriter.write(data);
+                bufferedWriter.newLine();
             }
 
             data = bufferedReader.readLine();

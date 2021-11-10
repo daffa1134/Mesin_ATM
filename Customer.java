@@ -33,26 +33,26 @@ public class Customer
     // Mendapatkan pin
     public int getPin() throws IOException
     {
-        return card.getPin();
+        return card.getPin(id);
     }
 
     // Mendapatkan saldo
     public int getBalance() throws IOException
     {
-        return card.getBalance();
+        return card.getBalance(id);
     }
 
     //method tarik saldo
     public void setWithdrawBalance(int nominal) throws IOException
     {
         // Mengupdate saldo pada class AtmCard
-        card.setBalance(card.getBalance() - nominal);
+        card.setBalance(card.getBalance(id) - nominal);
     }
     // method setor saldo
     public void setDepositBalance(int nominal) throws IOException
     {
         // Mengupdate saldo pada class AtmCard
-        card.setBalance(card.getBalance() + nominal);
+        card.setBalance(card.getBalance(id) + nominal);
     }
 
     // Mendapatkan nama customer
