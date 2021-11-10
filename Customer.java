@@ -1,8 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class Customer
 {
-    // private String nama;
+    private String nama;
     private String id;
     private AtmCard card;
     
@@ -10,12 +13,12 @@ public class Customer
     public Customer(String id) throws IOException
     {
         this.id = id;
+        nama = getNama();
         // Composition
         card = new AtmCard(id);
     }
-    /*
-    other method/feature of customer
-    */
+
+    // Mendapatkan ID customer
     public String getId()
     {
         return this.id;
@@ -48,5 +51,32 @@ public class Customer
     {
         // Mengupdate saldo pada class AtmCard
         card.setBalance(card.getBalance() + nominal);
+    }
+
+    // Mendapatkan nama customer
+    public String getNama() throws IOException {
+        FileReader fileReader = new FileReader("Database.DATA");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String data = bufferedReader.readLine();
+        StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
+        while (data != null) {
+            stringTokenizer = new StringTokenizer(data, ",");
+            stringTokenizer.nextToken();
+            // Ditemukan saldo berdasarkan ID
+            if (data.contains(id)) {
+                stringTokenizer.nextToken();
+                stringTokenizer.nextToken();
+                this.nama = stringTokenizer.nextToken();
+                break;
+            } else {
+                // Baca baris berikutnya
+                data = bufferedReader.readLine();
+            }            
+        }
+        bufferedReader.close();
+
+
+        return this.nama;
     }
 }

@@ -114,9 +114,9 @@ public class AtmCard
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
             stringTokenizer.nextToken();
-            stringTokenizer.nextToken();
             // Ditemukan saldo berdasarkan ID
             if (data.contains(id)) {
+                stringTokenizer.nextToken();
                 this.balance = Integer.parseInt(stringTokenizer.nextToken());
                 break;
             } else {
@@ -130,9 +130,51 @@ public class AtmCard
     }
 
     // Method perbarui saldo di database
-    public void setBalance(int balanceBaru)
+    public void setBalance(int balanceBaru) throws IOException
     {
-        this.balance = balanceBaru;
-    }
+        // Buka database original
+        File file = new File("Database.DATA");
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        
+        // Membuat Database temporary
+        File temp = new File("TempDatabase.TEMP");
+        FileWriter fileWriter = new FileWriter(temp);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
+        // Membaca data
+        String data = bufferedReader.readLine();
+        StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
+
+        while(data != null) {
+            stringTokenizer = new StringTokenizer(data, ",");
+            stringTokenizer.nextToken();
+            if(data.contains(id)) {
+                // Majukan cursor ke PIN
+                String pin = stringTokenizer.nextToken();
+                // Pindah ke saldo lama
+                stringTokenizer.nextToken();
+                // Dapatkan nama
+                String nama = stringTokenizer.nextToken();
+                // Copy ke database sementara
+                bufferedWriter.write(id + "," + pin + "," + Integer.toString(balanceBaru) + "," + nama + "\n");
+            } else {
+                // Copy ke database sementara
+                bufferedWriter.write(data + "\n");
+            }
+
+            data = bufferedReader.readLine();
+        }
+        // Menulis data ke file
+        bufferedWriter.flush();
+        
+        // Jangan lupa tutup
+        bufferedReader.close();
+        bufferedWriter.close();
+
+        // Delete database lama
+        file.delete();
+        // Rename database temp ke DATABASE.DATA
+        temp.renameTo(file);
+    }
 }

@@ -35,6 +35,7 @@ public class MainATM{
         int resi = (int) random;
         System.out.println("No. Record\t: " + resi);
         Date tanggal = new Date();
+        System.out.println("Pemilik\t\t: " + user.getNama());
         System.out.println("Tanggal\t\t: " + tanggal);
         System.out.println("Saldo akhir\t: Rp. " + user.getBalance() + "\n");
         System.out.println("Terima kasih telah menggunakan ATM-KU");
@@ -127,13 +128,13 @@ public class MainATM{
                         
                         if (confirm.equalsIgnoreCase("y")){
                             System.out.println("Saldo awal anda adalah: Rp. " + user.getBalance());
-                        }else break;
+                        } else break;
                         
                         if (nominal <= user.getBalance()){
                             user.setWithdrawBalance(nominal);
                             System.out.println("Penarikan berhasil!");
                             System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
-                        }else{
+                        } else{
                             System.out.println("Maaf saldo anda tidak cukup untuk melakukan penarikan!");
                             System.out.println("Silahkan lakukan penambahan saldo");
                         }
@@ -186,6 +187,7 @@ public class MainATM{
                 System.out.print("Lanjutkan transaksi? y/n ");
                 confirm = input_str.nextLine();
             } while(confirm.equalsIgnoreCase("y"));
+            clearScreen();
             strk.struk();
             break;
         }
