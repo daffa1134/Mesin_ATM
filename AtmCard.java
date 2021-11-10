@@ -33,14 +33,18 @@ public class AtmCard
     {
         FileReader fileReader = new FileReader("Database.DATA");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-
+        // Membaca 1 baris
         String data = bufferedReader.readLine();
+        // Diambil data yang dipisahkan dengan koma(,)
         StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
+        // Dibaca sampai akhir dari file
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
+            // Pindah ke ID
             stringTokenizer.nextToken();
-            // Ditemukan PIN berdasarkan ID
+            // Ditemukan pin berdasarkan ID
             if (data.contains(id)) {
+                // Mendapatkan pin
                 this.pin = Integer.parseInt(stringTokenizer.nextToken());
                 break;
             } else {
@@ -69,9 +73,10 @@ public class AtmCard
         // Membaca data
         String data = bufferedReader.readLine();
         StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
-
+        // Dibaca sampai akhir dari file
         while(data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
+            // Pindah ke ID
             stringTokenizer.nextToken();
             if(data.contains(id)) {
                 
@@ -79,7 +84,7 @@ public class AtmCard
                 stringTokenizer.nextToken();
                 // Dapatkan saldo
                 String nominal = stringTokenizer.nextToken();
-                // Dapatka nama
+                // Dapatkan nama
                 String nama = stringTokenizer.nextToken();
                 // Copy ke database sementara
                 bufferedWriter.write(id + "," + Integer.toString(pinBaru) + "," + nominal + "," + nama + "\n");

@@ -9,7 +9,7 @@ public class Customer
     private String id;
     private AtmCard card;
     
-    // method constrkator
+    // method constructor
     public Customer(String id) throws IOException
     {
         this.id = id;
@@ -23,18 +23,20 @@ public class Customer
     {
         return this.id;
     }
-    
+
     // Mengubah pin customer, dan juga merubahnya pada class AtmCard
     public void setPin(int pin) throws IOException
     {
         card.setPin(pin);
     }
 
+    // Mendapatkan pin
     public int getPin() throws IOException
     {
         return card.getPin();
     }
 
+    // Mendapatkan saldo
     public int getBalance() throws IOException
     {
         return card.getBalance();
@@ -57,16 +59,22 @@ public class Customer
     public String getNama() throws IOException {
         FileReader fileReader = new FileReader("Database.DATA");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-
+        // Membaca 1 baris
         String data = bufferedReader.readLine();
+        // Diambil data yang dipisahkan dengan koma(,)
         StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
+        // Dibaca sampai akhir dari file
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
+            // Pindah ke ID
             stringTokenizer.nextToken();
             // Ditemukan saldo berdasarkan ID
             if (data.contains(id)) {
+                // Pindah ke pin
                 stringTokenizer.nextToken();
+                // Pindah ke saldo
                 stringTokenizer.nextToken();
+                // Pindah dan dapatkan nama
                 this.nama = stringTokenizer.nextToken();
                 break;
             } else {
@@ -75,7 +83,6 @@ public class Customer
             }            
         }
         bufferedReader.close();
-
 
         return this.nama;
     }
