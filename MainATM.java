@@ -120,6 +120,7 @@ public class MainATM{
                         System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
                         break;
                     case 2:
+                        System.out.println("ATM ini hanya melayani penarikan dengan pecahan 100000!");
                         System.out.print("Masukkan nominal saldo: ");
                         nominal = input_int.nextInt();
                         
@@ -130,11 +131,15 @@ public class MainATM{
                             System.out.println("Saldo awal anda adalah: Rp. " + user.getBalance());
                         } else break;
                         
-                        if (nominal <= user.getBalance()){
+                        if (nominal <= user.getBalance() && (nominal % 100000) == 0){
                             user.setWithdrawBalance(nominal);
                             System.out.println("Penarikan berhasil!");
                             System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
-                        } else{
+                        } 
+                        else if (nominal % 100000 != 0){
+                            System.out.println("Error!ATM ini hanya melayani penarikan dengan pecahan 100000!");
+                        }
+                        else{
                             System.out.println("Maaf saldo anda tidak cukup untuk melakukan penarikan!");
                             System.out.println("Silahkan lakukan penambahan saldo");
                         }
@@ -177,6 +182,7 @@ public class MainATM{
                         }
                         break;
                     case 5:
+                        strk.struk();
                         System.exit(0);
                         break;
                     default:
