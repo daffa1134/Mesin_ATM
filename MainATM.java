@@ -54,7 +54,7 @@ public class MainATM{
             stringTokenizer = new StringTokenizer(data, ",");
             stringTokenizer.nextToken();
             // Ditemukan idnya
-            if (data.contains(id)) {
+            if (data.equals(id)) {
                 adaData = true;
                 break;
             } else {

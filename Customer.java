@@ -69,7 +69,7 @@ public class Customer
             // Pindah ke ID
             stringTokenizer.nextToken();
             // Ditemukan saldo berdasarkan ID
-            if (data.contains(id)) {
+            if (data.equals(id)) {
                 // Pindah ke pin
                 stringTokenizer.nextToken();
                 // Pindah ke saldo
