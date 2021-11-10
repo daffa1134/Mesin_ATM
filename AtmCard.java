@@ -40,10 +40,8 @@ public class AtmCard
         // Dibaca sampai akhir dari file
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
-            // Pindah ke ID
-            stringTokenizer.nextToken();
             // Ditemukan pin berdasarkan ID
-            if (data.equals(id)) {
+            if (id.equals(stringTokenizer.nextToken())) {
                 // Mendapatkan pin
                 this.pin = Integer.parseInt(stringTokenizer.nextToken());
                 break;
@@ -77,8 +75,7 @@ public class AtmCard
         while(data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
             // Pindah ke ID
-            stringTokenizer.nextToken();
-            if(data.equals(id)) {
+            if(id.equals(stringTokenizer.nextToken())) {
                 
                 // Majukan cursor ke PIN lama
                 stringTokenizer.nextToken();
@@ -118,9 +115,8 @@ public class AtmCard
         StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
-            stringTokenizer.nextToken();
-            // Ditemukan saldo berdasarkan ID
-            if (data.equals(id)) {
+            // Ditemukan ID
+            if (id.equals(stringTokenizer.nextToken())) {
                 stringTokenizer.nextToken();
                 this.balance = Integer.parseInt(stringTokenizer.nextToken());
                 break;
@@ -153,8 +149,8 @@ public class AtmCard
 
         while(data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
-            stringTokenizer.nextToken();
-            if(data.equals(id)) {
+            // Pengecekan ID
+            if(id.equals(stringTokenizer.nextToken())) {
                 // Majukan cursor ke PIN
                 String pin = stringTokenizer.nextToken();
                 // Pindah ke saldo lama

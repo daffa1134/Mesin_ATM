@@ -30,14 +30,16 @@ public class MainATM{
     
     public void struk() throws IOException
     {
+        System.out.println("===========================================================");
         System.out.println("Resi tercetak otomatis saat anda keluar!\nHarap simpan tanda terima ini sebagai bukti transaksi anda.\n");
         double random = 100000 + Math.random() * (1000000-100000);
         int resi = (int) random;
-        System.out.println("No. Record\t: " + resi);
+        System.out.println("No. Resi\t: " + resi);
         Date tanggal = new Date();
         System.out.println("Pemilik\t\t: " + user.getNama());
         System.out.println("Tanggal\t\t: " + tanggal);
         System.out.println("Saldo akhir\t: Rp. " + user.getBalance() + "\n");
+        System.out.println("===========================================================");
         System.out.println("Terima kasih telah menggunakan ATM-KU");
 
     }
@@ -52,9 +54,8 @@ public class MainATM{
         StringTokenizer stringTokenizer = new StringTokenizer(data, ",");
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
-            stringTokenizer.nextToken();
             // Ditemukan idnya
-            if (data.equals(id)) {
+            if (id.equals(stringTokenizer.nextToken())) {
                 adaData = true;
                 break;
             } else {

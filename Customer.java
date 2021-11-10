@@ -67,9 +67,9 @@ public class Customer
         while (data != null) {
             stringTokenizer = new StringTokenizer(data, ",");
             // Pindah ke ID
-            stringTokenizer.nextToken();
+            
             // Ditemukan saldo berdasarkan ID
-            if (data.equals(id)) {
+            if (id.equals(stringTokenizer.nextToken())) {
                 // Pindah ke pin
                 stringTokenizer.nextToken();
                 // Pindah ke saldo
