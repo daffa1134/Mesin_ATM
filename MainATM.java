@@ -138,10 +138,10 @@ public class MainATM{
                             System.out.println("Saldo anda sekarang: Rp. " + user.getBalance());
                         } 
                         else if (nominal % 100000 != 0){
-                            System.out.println("Error!ATM ini hanya melayani penarikan dengan pecahan 100000!");
+                            System.err.println("Error!ATM ini hanya melayani penarikan dengan pecahan 100000!");
                         }
                         else{
-                            System.out.println("Maaf saldo anda tidak cukup untuk melakukan penarikan!");
+                            System.err.println("Maaf saldo anda tidak cukup untuk melakukan penarikan!");
                             System.out.println("Silahkan lakukan penambahan saldo");
                         }
                         break;
@@ -149,7 +149,7 @@ public class MainATM{
                         System.out.print("Masukkan nominal saldo: ");
                         nominal = input_int.nextInt();
                         
-                        System.out.println("Konfirmasi: Anda akan melakukan penyetoran dengan nominal berikut? y/n Rp. " + nominal + " ");
+                        System.out.print("Konfirmasi: Anda akan melakukan penyetoran dengan nominal berikut? y/n Rp. " + nominal + " ");
                         confirm = input_str.nextLine();
                         
                         if (confirm.equalsIgnoreCase("y")){
@@ -165,7 +165,7 @@ public class MainATM{
                         pin = input_int.nextInt();
                         
                         while(pin != user.getPin()){
-                            System.out.print("Pin salah! Silahkan masukkan lagi: ");
+                            System.err.print("Pin salah! Silahkan masukkan lagi: ");
                             pin = input_int.nextInt();
                         }
                         
@@ -179,7 +179,7 @@ public class MainATM{
                             user.setPin(newPin);
                             System.out.println("Pin berhasil diganti!");
                         }else{
-                            System.out.println("Pin gagal dikonfirmasi! Pastikan pin baru dan konfirmasi pin baru sama");
+                            System.err.println("Pin gagal dikonfirmasi! Pastikan pin baru dan konfirmasi pin baru sama");
                         }
                         break;
                     case 5:
@@ -187,7 +187,7 @@ public class MainATM{
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Anda salah memilih menu.");
+                        System.err.println("Anda salah memilih menu.");
                         System.exit(0);
                         break;
                 }

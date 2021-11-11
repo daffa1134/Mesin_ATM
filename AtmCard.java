@@ -97,7 +97,8 @@ public class AtmCard
                 bufferedWriter.write(id + "," + Integer.toString(pinBaru) + "," + nominal + "," + nama + "\n");
             } else {
                 // Copy ke database sementara
-                bufferedWriter.write(data + "\n");
+                bufferedWriter.write(data);
+                bufferedWriter.newLine();
             }
 
             data = bufferedReader.readLine();

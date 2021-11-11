@@ -14,7 +14,7 @@ public class Customer
     {
         this.id = id;
         nama = getNama();
-        // Composition
+        // COMPOSITION
         card = new AtmCard(id);
     }
 
