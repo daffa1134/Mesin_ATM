@@ -93,8 +93,12 @@ public class AtmCard
                 String nominal = stringTokenizer.nextToken();
                 // Dapatkan nama
                 String nama = stringTokenizer.nextToken();
+                // Dapatkan jenis kelamin
+                String jk = stringTokenizer.nextToken();
+                // Dapatkan alamat
+                String alamat = stringTokenizer.nextToken();
                 // Copy ke database sementara
-                bufferedWriter.write(id + "," + Integer.toString(pinBaru) + "," + nominal + "," + nama + "\n");
+                bufferedWriter.write(id + "," + Integer.toString(pinBaru) + "," + nominal + "," + nama + "," + jk + "," + alamat);
             } else {
                 // Copy ke database sementara
                 bufferedWriter.write(data);
@@ -168,8 +172,12 @@ public class AtmCard
                 stringTokenizer.nextToken();
                 // Dapatkan nama
                 String nama = stringTokenizer.nextToken();
+                // Dapatkan jenis kelamin
+                String jk = stringTokenizer.nextToken();
+                // Dapatkan alamat
+                String alamat = stringTokenizer.nextToken();
                 // Copy ke database sementara
-                bufferedWriter.write(id + "," + pin + "," + Integer.toString(balanceBaru) + "," + nama);
+                bufferedWriter.write(id + "," + pin + "," + Integer.toString(balanceBaru) + "," + nama + "," + jk + "," + alamat);
                 bufferedWriter.newLine();
             } else {
                 // Copy ke database sementara
