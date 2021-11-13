@@ -1,6 +1,7 @@
 # Mesin_ATM
+------------------------------------------------------------------------
 ## Welcome to ATM-KU. This is the project README file. 
- ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
  PROJECT TITLE: Mesin_ATM
  PURPOSE OF PROJECT: Memenuhi tugas the only one praktikum MK PBO
