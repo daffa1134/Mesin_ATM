@@ -4,7 +4,7 @@
 ------------------------------------------------------------------------
 
  - PROJECT TITLE: Mesin_ATM.
-  PURPOSE OF PROJECT: Memenuhi tugas the only one praktikum MK PBO
+ - PURPOSE OF PROJECT: Memenuhi tugas the only one praktikum MK PBO
  - VERSION or DATE: 13-11-2021
  - AUTHORS: Faris Rasyid & Daffa Mudhaffar
  - USER INSTRUCTIONS: 
